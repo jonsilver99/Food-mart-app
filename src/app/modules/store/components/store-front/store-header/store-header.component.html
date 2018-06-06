@@ -1,0 +1,54 @@
+<div id="header-wrapper">
+    <app-nav-bar [styleByPage]="'storePage'">
+        <li routerLinkActive="active">
+            <i class="fa fa-question"></i>
+            <a class="nav-link" routerLink="signin">About</a>
+        </li>
+        <li routerLinkActive="active">
+            <i class="fa fa-phone"></i>
+            <a class="nav-link" href="tel:1-800-1234-123">Contact: 1-800-1234-123</a>
+        </li>
+        <li routerLinkActive="active">
+            <a class="nav-link">                     
+                <app-search></app-search>
+            </a>
+        </li>
+
+        <li class="right-aligned" routerLinkActive="active">
+            <i class="fa fa-user"></i>
+            <a class="nav-link">My Account ({{UserName}})</a>
+            <div appDropdown class="dropdown">
+                <i class="fa fa-caret-down"></i>
+                <div class="dropdown-menu account-dropdown">
+                    <a class="dropdown-item" routerLink="../cart">Cart</a>
+                    <a class="dropdown-item" href="#">Wishlist</a>
+                    <a class="dropdown-item" routerLink="../purchaseHistory">Purchase history</a>
+                    <a (click)="signOut($event)" class="dropdown-item">Sign out</a>
+                </div>
+            </div>
+        </li>
+    </app-nav-bar>
+    <div class="store-content-area">
+        <div id="main-heading" class="flexRow align-items-center">
+            <div id="logo">
+                <a routerLink="/store" class="flexRow align-items-center">
+                    <img id="site-logo" src="/assets/logo3.png" alt="">
+                    <h2>FOOD-MART EXPRESS</h2>
+                </a>
+            </div>
+            <div id="hud" class="right-aligned">
+                <a routerLink="../cart" class="flexRow align-items-center">
+                    <h3>
+                        <i class="fa fa-shopping-cart"></i>
+                    </h3>
+                    <span *ngIf="CartIndicator$ | async as itemsIncart; else loading">
+                        ( {{ itemsIncart.length }} )
+                    </span>
+                    <ng-template #loading>
+                        <span>Loading...</span>
+                    </ng-template>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

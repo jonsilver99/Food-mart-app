@@ -1,0 +1,11 @@
+<div class="formStep-body">
+    <div class="review-container pad-sides-light">
+        <h6>Review & Submit</h6>
+        <div *ngFor="let key of ObjectKeys(AllFormsControls)" class="form-group">
+            <div class="review-row">
+                <label>{{key | resolveSpaceAndCapitals}}</label>
+                <input type="text" class="form-control" value="{{AllFormsControls[key].value}}" disabled>
+            </div>
+        </div>
+    </div>
+</div>

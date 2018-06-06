@@ -1,0 +1,43 @@
+<div class="flexCol align-items-center">
+    <div class="col-md-4">
+        <!-- Switch to sign-up form -->
+        <div class="form-header">
+            <a class="formSwitcher" (click)="navigateToSignUpForm($event)">Not a member? - Join now</a>
+            <br>
+        </div>
+
+        <form [formGroup]="SignInForm" (ngSubmit)="onSubmit()">
+            <!-- Heading -->
+            <div id="login-title" class="flexRow align-items-center">
+                <h5>Please sign in</h5>
+                <span *ngIf="IsPending" class="right-aligned">
+                    <b>
+                        Loading...  
+                        <i class="fa fa-spinner fa-spin"></i>
+                    </b>
+                </span>
+            </div>
+            <section class="form-body pad-medium">
+                <div class="form-group">
+                    <app-invalid-form-field 
+                        *ngIf="fieldIsInvalid('Email')" 
+                        [Errors]="SignInForm.get('Email').errors">
+                    </app-invalid-form-field>
+                    <input type="text" formControlName="Email" class="form-control" placeholder="Email">
+                </div>
+
+                <div class="form-group">
+                    <app-invalid-form-field 
+                        *ngIf="fieldIsInvalid('Password')" 
+                        [Errors]="SignInForm.get('Password').errors">
+                    </app-invalid-form-field>
+                    <input type="password" formControlName="Password" class="form-control" placeholder="Password">
+                </div>
+
+                <div class="form-group flexRow justify-content-center">
+                    <button type="submit" class="btn btn-success" [disabled]="SignInForm.invalid || IsPending">Sign in</button>
+                </div>
+            </section>
+        </form>
+    </div>
+</div>

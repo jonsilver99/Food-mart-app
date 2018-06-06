@@ -1,0 +1,20 @@
+<div class="flexCol fullHeight fullWidth">
+    <div class="flexRow justify-content-center">
+        <h4>Recently viewed</h4>
+    </div>
+    <div id="recently-viewed-container" class="flexRow justify-content-center align-content-start">
+        <ng-container *ngIf="RecentleyViewed$ | async as recentlViewes ; else loading">
+            <div *ngIf="!recentlViewes.length">
+                <b>Nothing yet</b>
+            </div>
+            <app-product-gallery-card
+                *ngFor="let product of recentlViewes, let i = index"
+                [ProductData]="product" 
+                class="recentley-viewed-cube">
+            </app-product-gallery-card>
+        </ng-container>
+        <ng-template #loading>
+            <b>Loading...</b>    
+        </ng-template>    
+    </div>
+</div>

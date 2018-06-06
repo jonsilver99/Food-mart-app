@@ -1,0 +1,16 @@
+#date-picker-box{
+    padding: 1rem;
+    background: #27AE60;
+    color: whitesmoke;
+}
+
+label{
+    font-size: 1.15rem;
+    /* font-weight: bold; */
+    /* color: #27AE60;  */
+    margin-right: 5px;
+}
+
+#chart-wrapper{
+    padding: 1rem;
+}

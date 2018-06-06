@@ -1,0 +1,16 @@
+admin features
+
+* overview component
+    - showing sales shows a trend graph of total sales in last 10 days
+    - showing out of stock products
+    - showing best selling products
+
+* stock managment
+    - shows a list of all products, 
+    - allows to view a product and set a discount on it
+    - allows to add up to 10 products at once (using form array)
+
+
+* customer management
+    - shows a list of all customers - selecting one of them will display his purchase history
+    - show individual selected customer and allows the send him gift credit (or just make it automatic when buying over 100$)

@@ -1,0 +1,56 @@
+<div id="dashboard">
+    <app-nav-bar [styleByPage]="'storePage'">
+        <li routerLinkActive="active">
+            <i class="fa fa-question"></i>
+            <a class="nav-link" routerLink="signin">About</a>
+        </li>
+        <li routerLinkActive="active">
+            <i class="fa fa-phone"></i>
+            <a class="nav-link" href="tel:1-800-1234-123">Contact: 1-800-1234-123</a>
+        </li>
+        <li routerLinkActive="active">
+            <a class="nav-link">
+                <app-search></app-search>
+            </a>
+        </li>
+        <li class="right-aligned" routerLinkActive="active">
+            <i class="fa fa-user"></i>
+            <a class="nav-link">My Account ({{UserName}})</a>
+            <div appDropdown class="dropdown">
+                <i class="fa fa-caret-down"></i>
+                <div class="dropdown-menu account-dropdown">
+                    <a class="dropdown-item" href="#">View my account</a>
+                    <a (click)="signOut($event)" class="dropdown-item">Sign out</a>
+                </div>
+            </div>
+        </li>
+    </app-nav-bar>
+    <div id="dash-body" class="flexRow">
+        <app-dashboard-aside class="flex3" (ActionSelect)="onActionSelected($event)"></app-dashboard-aside>
+        <div class="flex15" id="dash-dynamic-container">
+
+            <ng-container *ngIf="View == 'Sales'">
+                <ng-container *ngIf="SalesData$ | async as SalesData; else loading">
+                    <app-sales [SalesByDates]="SalesData" (TrendGraphDateSelect)="onTrendGraphDateSelected($event)"></app-sales>
+                </ng-container>
+            </ng-container>
+
+            <ng-container *ngIf="View == 'StockManagement'">
+                <ng-container *ngIf="StockProducts$ | async as StockProducts; else loading">
+                    <app-stock-manage-table [Stock]="StockProducts"></app-stock-manage-table>
+                </ng-container>
+            </ng-container>
+
+            <ng-container *ngIf="View=='AddProduct'">
+                <app-add-product></app-add-product>
+            </ng-container>
+
+
+            <ng-template #loading>
+                <div id="loading-template-large">
+                    <img src="/assets/spinners/loading-template-spinner.gif" alt="">
+                </div>
+            </ng-template>
+        </div>
+    </div>
+</div>

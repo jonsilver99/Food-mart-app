@@ -1,0 +1,13 @@
+<div (click)="viewProduct()" class="gallery-card flexCol" [ngClass]="styleByProductFlags()">
+    <div class="card-image">
+        <img appImgPathResolver src="{{S3FolderPath}}/{{ProductData.ProductPicture}}" alt="">
+    </div>
+    <div class="card-description">
+        <div class="card-title">
+            {{ProductData.ProductName}}
+        </div>
+        <div class="card-price">
+            {{ProductData.UnitPrice | currency: 'EUR'}}
+        </div>
+    </div>
+</div>

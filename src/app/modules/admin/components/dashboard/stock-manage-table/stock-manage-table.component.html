@@ -1,0 +1,23 @@
+<table class="table" [formGroup]="StockManageForm">
+    <thead>             
+        <tr>
+            <th>Picture</th>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>In stock</th>
+            <th>Discount</th>
+            <th>Sold</th>
+            <th>Changes</th>
+        </tr>
+    </thead>
+    <tbody formArrayName="Products">
+        <tr app-product-row 
+            *ngFor="let product of reactiveProducts, let i = index" 
+            [Mode]="'EditProductMode'" 
+            [ReactiveProduct]="product"
+            (EditProduct)="onEditProduct($event)">
+        </tr>
+    </tbody>
+</table>

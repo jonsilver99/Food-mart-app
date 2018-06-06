@@ -1,0 +1,51 @@
+<div id="carousel-container" class="flexRow align-items-center">
+
+    <!-- carousel controls -->
+    <div id="previous" class="category-switcher fa fa-chevron-left" (click)="switchCategory($event.target.id)" ></div>
+    <div id="next" class="category-switcher fa fa-chevron-right" (click)="switchCategory($event.target.id)"></div>
+
+    <!-- category backgrounds -->
+    <div id="Bakery" class="category-bg" [ngClass]="{'active-cat': SelectedCategory?.Name== 'Bakery'}"></div>
+    <div id="Dairy" class="category-bg" [ngClass]="{'active-cat': SelectedCategory?.Name== 'Dairy'}"></div>
+    <div id="Drinks" class="category-bg" [ngClass]="{'active-cat': SelectedCategory?.Name== 'Drinks'}"></div>
+    <div id="MeatAndSeafood" class="category-bg" [ngClass]="{'active-cat': SelectedCategory?.Name== 'MeatAndSeafood'}"></div>
+    <div id="Pantry" class="category-bg" [ngClass]="{'active-cat': SelectedCategory?.Name== 'Pantry'}"></div>
+    <div id="VeggiesAndFruits" class="category-bg" [ngClass]="{'active-cat': SelectedCategory?.Name== 'VeggiesAndFruits'}"></div>
+
+    <!-- interactive content  -->
+    <div id="interactive-content" class="flexRow spread-content align-items-start">
+        <!-- category info  -->
+        <div *ngIf="ShowCategoryInfo" id="category-info" [@infoAnimation]>
+            <h1 class="title">Featured: {{SelectedCategory?.Name | resolveSpaceAndCapitals}}</h1>
+            <p class="paragraph">
+                {{UserName}}, Check out these products in our {{SelectedCategory?.Name | resolveSpaceAndCapitals}} category
+            </p>
+            <div class="flexRow">
+                <button class="shop-this-category" (click)="onStartShoppingClicked('category')">Shop This Category!</button>
+            </div>
+        </div>
+        <!-- category offers  -->
+        <div *ngIf="ShowCategoryOffers" id="category-offers" class="flexRow justify-content-end align-content-start" [@offersAnimation]>
+            <ng-container *ngIf="FeaturedProducts else loading">
+                <app-product-gallery-card 
+                    *ngFor="let offer of SelectedCategory?.Products, let i = index" 
+                    [ProductData]="offer" 
+                    class="offer-cube">
+                </app-product-gallery-card>
+            </ng-container>
+        </div>
+    </div>
+
+    <!-- slide to bottom  -->
+    <div id="shop-default-category" (click)="onStartShoppingClicked()">
+        <i class="fa fa-chevron-down"></i>
+    </div>
+</div>
+
+<!-- conditional templates -->
+<ng-template #loading>
+    <div id="loading-template-carousel">
+        Loading...  
+        <i class="fa fa-spinner fa-spin"></i>
+    </div>
+</ng-template>

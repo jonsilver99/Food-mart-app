@@ -1,1 +1,362 @@
 /* You can add global styles to this file, and also import other style files */
+
+/**********************
+    Core elements
+**********************/
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+}
+
+button:hover{
+    cursor: pointer;
+}
+
+button:disabled:hover{
+    cursor: not-allowed;
+}
+
+button:focus{
+    outline: none !important;
+}
+
+a {
+    text-decoration: none !important;
+}
+
+
+/* navigation component */
+nav{
+    position: relative;
+}
+
+img#site-logo-small {
+    background: transparent;
+    max-width:50%;
+} 
+
+#navButtons {
+    width: 100%;
+    color: whitesmoke !important;    
+}
+
+#navButtons > li {
+    margin-right: 2rem;
+    padding: .25rem .5rem;
+}
+
+#navButtons > li:last-child {
+    margin-right: initial;
+} 
+
+#navButtons>li.active{
+    background: #27AE60 !important;
+    box-shadow: -2px 2px 3px rgb(108, 207, 150);
+}
+
+#navButtons .nav-link{
+    display: inline-block;
+    color: whitesmoke !important;
+}
+
+#navButtons button{
+    background: none;
+    color: whitesmoke !important;
+    border: 0;
+}
+
+i.fa{
+    margin-right: 5px;
+}
+
+i.fa-caret-down{
+    margin-right: 0;
+    margin-left: 5px;
+    text-align: right;
+}
+
+/* dropdowns */
+
+.dropdown{
+    display: inline-block !important;
+    position: relative !important;
+}
+
+.dropdown:hover{
+    cursor: pointer
+}
+
+.dropdown.show > .dropdown-menu {
+    display: block !important;
+}
+
+.dropdown.show > .dropdown-menu.account-dropdown {
+    position: absolute !important;
+    top: 99% !important;
+    left: -14.5rem !important;
+    width: 15.5rem !important;
+}
+
+.dropdown-menu:hover{
+    display: block !important;
+}
+
+.dropdown-menu.account-dropdown::before{
+    content: "";
+    display: block;
+    width: 15.5rem;
+    height: 2rem;
+    top: -10px;
+    z-index: 200;
+    position: absolute;
+}
+
+
+
+
+
+/* Forms */
+.form-control:focus{
+    box-shadow: 0 0 0 #27AE60 !important;
+    outline: 3px solid  #27AE60 !important;
+    transition: all 100ms linear !important;
+}
+
+/* Forms invalid fields style */
+input.ng-invalid.ng-touched, textarea.ng-invalid.ng-touched {
+    border: 1px solid red;
+}
+
+textarea.ng-invalid.ng-touched{
+    border: 1px solid red;
+}
+
+span.invalid-notice{
+    color: red;
+    margin: 0 1vh;
+    font-size: .8rem;
+}
+
+/* background overlay for dialogues/pop-ups */
+#bg-overlay {
+    background: rgba(0, 0, 0, 0.459);
+    position: absolute;
+    width: 100%;
+    height: 200vh;
+    /* height: 100%; */
+    top: 0;
+    left: 0;
+    z-index: 30;
+}
+
+/* background overlay for alerts and notifications */
+
+#notifications-bg-overlay {
+    position: absolute;
+    width: 100%;
+    height: 200vh;
+    /* height: 100%; */
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
+
+/*loading templates*/
+#loading-template-fullscreen{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    z-index: 1000;
+}
+
+#loading-template-large{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background: white;
+}
+
+#loading-template-carousel{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-size: 2.5rem;
+}
+
+
+
+/*********************
+    Utilities
+*********************/
+
+/*Box model*/
+
+.overflow-hidden{
+    overflow: hidden;
+}
+
+.overflow-ellipsis{
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.overflow-auto{
+    overflow: auto;
+}
+
+.pad-medium{
+    padding: 2rem;
+}
+
+.pad-sides-light{
+    padding: 0 1rem;
+}
+
+.pad-sides-medium{
+    padding: 0 2rem;
+}
+
+.fullHeight{
+    height: 100%;
+}
+
+.fullWidth{
+    width: 100%;
+}
+
+.no-padding {
+    padding: 0 !important;
+}
+
+/*Flex Layout*/
+
+.flexRow{
+    display: flex;
+    flex-direction: row !important;
+}
+
+.flexCol{
+    display: flex;
+    flex-direction: column;
+}
+
+.flexHalfpoint{
+    flex:0.5;
+}
+
+.flex1{
+    flex:1;
+}
+
+.flex2{
+    flex:2;
+}
+
+.flex3{
+    flex:3;
+}
+
+.flex4{
+    flex:4;
+}
+
+.flex5{
+    flex:5;
+}
+
+.flex6{
+    flex:6;
+}
+
+.flex7{
+    flex:7;
+}
+
+.flex8{
+    flex:8;
+}
+
+.flex9{
+    flex:9;
+}
+
+.flex10{
+    flex:10;
+}
+
+.flex12{
+    flex:12;
+}
+
+.flex15{
+    flex:15;
+}
+
+.align-items-center{
+    align-items: center
+}
+
+.align-items-start{
+    align-items: flex-start;
+}
+
+.align-items-end{
+    align-items: flex-end;
+}
+
+.align-content-center{
+    align-items: center
+}
+
+.align-content-start{
+    align-content: flex-start;
+}
+
+.justify-content-center{
+    justify-content: center;
+}
+
+.justify-content-start{
+    justify-content: flex-start;
+}
+
+.justify-content-end{
+    justify-content: flex-end;
+}
+
+.spread-content{
+    justify-content: space-between;
+}
+
+.flex-wrap{
+    flex-wrap: wrap;
+}
+
+.no-wrap{
+    flex-wrap: nowrap !important;
+}
+
+.right-aligned{
+    margin-left: auto;     
+}
+
+.left-aligned{
+    margin-right: auto;     
+}
+
+.center-aligned{
+    margin: auto;     
+}
+
+.bottom-aligned{
+    margin-top: auto;     
+}

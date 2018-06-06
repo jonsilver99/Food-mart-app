@@ -1,0 +1,11 @@
+<div id="date-picker-box" class="flexRow justify-content-start align-items-center">
+    <label>Show from date:</label>
+    <div>
+        <input type="date" class="form-control" placeholder="All" (input)="showFromDate($event.target.value)">
+    </div>
+</div>
+<div id="chart-wrapper">
+    <canvas #canvas id="canvas">
+        {{Chart}}
+    </canvas>
+</div>

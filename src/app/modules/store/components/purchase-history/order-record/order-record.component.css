@@ -1,0 +1,74 @@
+.order-record-wrapper{
+    border: 1px solid gainsboro;
+    padding: .15rem;
+    margin: 1rem 0 3rem;
+}
+       
+.order-record-head{
+    background: #9E61C8;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.order-record-cart-summary{
+    border-top: 1px solid gainsboro;
+    border-bottom: 1px solid gainsboro;
+}
+
+
+h3{
+    margin: 0;
+}
+
+.order-record-dates,
+.order-record-payment-type > section{
+    padding: .5rem;
+}
+
+
+.order-record-dates > div,
+.order-record-payment-type > section
+{
+    font-weight: bold;
+}
+
+.order-record-download{
+    min-height: 60px;
+    align-items: flex-end;
+}
+
+button.download-reciept{
+    border: 0;
+    background: #419c76;
+    padding:.5rem 1rem .6rem;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: bold;
+    line-height: 1.15rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+    border-bottom: 0.2rem solid #285843 !important;
+    transition: background 180ms ease-in-out;
+}
+
+button.download-reciept:not(:disabled):hover{
+    background: #28a745; 
+    transition: background 180ms ease-in-out;   
+}
+
+button.download-reciept:focus{
+    border-bottom: 0 !important;
+}
+
+button.download-reciept:disabled{
+    background: gray;
+}
+
+
+
+.download-elements{
+    display: none;
+}

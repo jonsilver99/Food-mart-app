@@ -1,0 +1,62 @@
+:host{
+}
+
+#aside-wrapper{
+    height: 100%;    
+    overflow: hidden; 
+    justify-content: flex-start;
+    border-right: 1px solid;       
+}
+
+#aside-heading{
+    background:
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75)),
+    url(/assets/divBg.jpg);
+    background-size: 50%;
+    background-position: center center;
+    padding: 1rem;
+    color: #13221d;
+}
+
+#aside-heading h3{
+    color: #419c76;
+    font-weight: bold;
+    text-shadow: -1px -1px 1px whitesmoke, -2px -2px 2px #27ae60;
+}
+
+#aside-body{
+    padding: 1rem;
+} 
+
+#accordion button {
+    color: #27AE60 !important;
+    font-weight: bold !important;
+}
+
+h6:hover {
+    cursor: pointer;
+}
+
+#accordion h6{
+    position: relative;
+}
+
+#accordion h6:after{
+    content: '';
+    width: 0%;
+    height: 3px;
+    border-bottom:2px solid #9E61C8;  
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    /* z-index: 10; */
+    transition: all 100ms linear;
+}    
+
+#accordion h6:hover:after{
+    width: 100%;    
+}
+
+#accordion h6.selectedAction:after{
+    width: 100%;        
+}

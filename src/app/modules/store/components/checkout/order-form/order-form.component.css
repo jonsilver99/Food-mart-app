@@ -1,0 +1,47 @@
+/*Order form*/
+
+#order-form{
+    border-top: 1px solid #dee2e6;
+    padding: .75rem;
+    font-weight: bold;    
+}
+
+#order-form label{
+    margin-bottom: .75rem;
+}
+
+.form-row{
+    margin-bottom: 1rem;
+}
+
+
+
+#checkout-button{
+    width: 100%;
+    border: 0;
+    background: #419c76;
+    padding:.5rem 1rem .6rem;
+    color: #fff;
+    font-size: 1.15rem;
+    font-weight: bold;
+    line-height: 1.15rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+    border-bottom: 0.2rem solid #285843 !important;
+    transition: background 180ms ease-in-out;
+}
+
+#checkout-button:disabled{
+    background: gray;
+}
+
+#checkout-button:not(:disabled):hover{
+    background: #28a745; 
+    transition: background 180ms ease-in-out;   
+}
+
+#checkout-button:focus{
+    border-bottom: 0 !important;
+}

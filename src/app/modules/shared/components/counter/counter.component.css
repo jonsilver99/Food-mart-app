@@ -1,0 +1,31 @@
+.stock-counter {
+    background: rgba(0, 0, 0, 0.05);
+    /* border-radius: 25px; */
+    overflow: hidden;
+    font-size: 1.15rem;
+    font-weight: bold;
+    display: inline-block;
+}
+
+p {
+    text-align: center;
+    width: 50px;
+    margin: 0;
+  }
+
+button {
+    padding: .25rem .5rem .35rem;
+    border-radius: 0;
+    background: #9E61C8;
+    color: #fff;
+    border: 0;
+    font-size: 1.15rem;
+    font-weight: bold;
+    line-height: 1.15rem;
+    width: 2rem;
+}
+
+button:disabled {
+    background: rgba(0, 0, 0, 0.1);
+    color: rgba(0, 0, 0, 0.4);
+}

@@ -1,0 +1,53 @@
+<div id="bg-overlay" *ngIf="Viewing$ | async as viewingProduct" (click)="closePopUp($event)">
+    <div id="view-prod-modal" class="container flexCol fullHeight" (click)="stopClickPropagation($event)">
+        <div class="flexRow overflow-hidden flex7">
+            <div id="prod-image-wrapper" class="col-md-5 overflow-hidden no-padding">
+                <img id="prod-image" src="{{S3FolderPath}}/{{viewingProduct.ProductPicture}}" [ngClass]="{'outOfStock':viewingProduct.UnitsInStock < 1}" alt="">
+            </div>
+            <div class="col-md-7 overflow-hidden flexCol">
+                <span id="prod-title" class="sm-btm-mrgn">{{viewingProduct.ProductName}}</span>
+                <span id="prod-availability">
+                    Availability:
+                    <span class="green" *ngIf="viewingProduct.UnitsInStock > 0"> in stock ({{viewingProduct.UnitsInStock}})</span>
+                    <span class="red" *ngIf="viewingProduct.UnitsInStock < 1"> out of stock</span>
+                </span>
+                <span id="prod-price" class="sm-btm-mrgn">{{viewingProduct.UnitPrice | currency: 'EUR'}}</span>
+                <p id="prod-description">
+                    {{viewingProduct.Description}}
+                </p>
+                <span id="wish-list" class="sm-btm-mrgn">
+                    Wish-list
+                    <i class="fa fa-heart add-to-wish-list" (click)="addToWishList(viewingProduct)"></i>
+                </span>
+                <!-- Add to cart form -->
+                <form id="add-to-cart-panel" class="flexRow bottom-aligned" *ngIf="viewingProduct.UnitsInStock > 0" [formGroup]="AddToCartForm">
+                    <app-counter formControlName="Qty" [max]="viewingProduct.UnitsInStock" ></app-counter>
+                    <button
+                        class="right-aligned"
+                        [ngClass]=""
+                        type="button" 
+                        id="add-to-cart-button" 
+                        (click)="addToCart()"
+                        [disabled]="AddToCartForm.invalid || IsPending"
+                        >
+                        <span *ngIf="RequestStatus == 'initial'">Add to cart</span>
+                        <span *ngIf="RequestStatus == 'pending'">Pending...</span>
+                        <span *ngIf="RequestStatus == 'success'">Item added!</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+        <span id="related-prods-title" class="sm-btm-mrgn sm-top-mrgn">Related products</span>             
+        <div id="related-products-container" class="flexRow overflow-hidden flex4 justify-content-center align-content-start">
+            <!-- <button (click)="closePopUp()">close popup</button> -->
+                    
+            <ng-container *ngIf="Related$ | async as relatedProducts" >
+                <app-product-gallery-card
+                    *ngFor="let relatedProduct of relatedProducts, let i = index" 
+                    [ProductData]="relatedProduct"
+                    class="product-cube">
+                </app-product-gallery-card>
+            </ng-container>
+        </div>
+    </div>
+</div>

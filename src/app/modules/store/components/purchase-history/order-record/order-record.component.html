@@ -1,0 +1,49 @@
+<div class="order-record-wrapper" #OrderRecordTemplate>
+    <div class="order-record-head">
+        <div>Order #{{ Order._id }} </div>
+    </div>
+    <div class="order-record-dates">
+        <div>Issued on: {{ Order.DateIssued }}</div>
+        <div>Delivery date: {{ Order.DeliveryDate }}</div>
+    </div>
+    <div class="order-record-cart-summary">
+        <app-cart-summary 
+            [Cart]="Order.Cart" 
+            [SubTotal]="Order.SubTotal" 
+            [ShippingAndHandling]="Order.ShippingAndHandling" 
+            [GrandTotal]="Order.GrandTotal"
+            [ProxyImages]=true>
+        </app-cart-summary>
+    </div>
+    <div class="order-record-payment-type">
+        <h3>Payment type</h3>
+        <section>
+            <div>Type - {{ Order.Payment.Type }} </div>
+            <ng-template [ngIf]="Order.Payment.Type=='Credit'">
+                <div>Card brand - {{ Order.Payment.CardBrand }} </div>
+                <div>Last 4 digits - {{ Order.Payment.LastFourDigits }} </div>
+            </ng-template>
+            <div>Transaction Id - {{ Order.Payment.Transaction_id }} </div>
+        </section>
+    </div>
+    <div class="flexRow order-record-download">
+        <button 
+            class="download-reciept right-aligned bottom-aligned" 
+            (click)='downloadReciept()' 
+            [disabled]="IsPending">
+            <span *ngIf="!IsPending">
+                Download reciept
+            </span>
+            <span *ngIf="IsPending">
+                Downloading  
+                <i class="fa fa-spinner fa-spin"></i>
+            </span>
+        </button>
+    </div>
+</div>
+
+<!-- download -->
+<div class="download-elements">
+    <canvas class="downloadable-canvas" #DownloadableCanvas></canvas>    
+    <a class="download-canvas-link" #DonwloadCanvasLink></a>
+</div>

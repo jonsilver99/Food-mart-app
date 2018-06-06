@@ -1,0 +1,27 @@
+<nav id="category-picker-nav" class="store-content-area flexRow align-items-center">
+    <h4 class="category" *ngFor="let category of AllCategories" (click)="browseGallery(category, null)" [ngClass]="{'selected':SelectedCategory==category}">
+        {{category | resolveSpaceAndCapitals | replaceString:'and':'&'}}
+    </h4>
+</nav>
+<div id="products-gallery" class="store-content-area flexRow align-items-start">
+    <div class="flex15 flexCol fullHeight">
+        <div class="flexRow">
+            <h4 class="gallery-title">Page</h4>
+            <button class="turn-page" [disabled]="onFirstGalleryPage()" (click)="browseGallery(null, 'prev')">Prev</button>
+            <h4 class="pagination-number" *ngFor="let page of TotalPages" (click)="browseGallery(null, page)" [ngClass]="{'selected':CurrentPage==page}">
+                {{page}}
+            </h4>
+            <button class="turn-page" [disabled]="onLastGalleryPage()" (click)="browseGallery(null, 'next')">Next</button>
+        </div>
+        <div id="browse-results-container" class="flexRow justify-content-center align-content-start">
+            <app-product-gallery-card
+                *ngFor="let product of GalleryProducts, let i = index" 
+                [ProductData]="product"
+                class="product-cube">
+            </app-product-gallery-card>
+        </div>
+    </div>
+    <div id="recently-viewed-outline" class="flex3 fullHeight">
+        <app-recently-viewed-products></app-recently-viewed-products>
+    </div>
+</div>

@@ -1,0 +1,53 @@
+/* Module Wrapper (main div) */
+:host{
+    overflow: hidden;
+    background-image: 
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)),
+        url(/assets/wallpapers/spices2.jpg);
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    background-size: 110%;
+    height: 100vh;
+    animation: wallpaperPane 45s infinite linear;
+    transition: background-image 300ms ease-in-out;
+}
+
+@keyframes wallpaperPane{
+    0%{
+        background-position: 0 100%;
+    }
+    100%{
+        background-position: 100% 0;        
+    }
+}
+
+
+#auth-content-area{
+    padding: 2rem 1rem;
+}
+
+#preLoadImgs{
+    display: none;
+}
+
+
+/****************************
+    SignUp and SignIn
+****************************/
+div.form-header{
+    position: relative;
+}
+
+.formSwitcher{
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: whitesmoke !important;;
+    font-size: .75rem;
+    font-weight: bold;
+}
+
+.formSwitcher:hover{
+    color: #27AE60 !important;
+    cursor: pointer;
+}

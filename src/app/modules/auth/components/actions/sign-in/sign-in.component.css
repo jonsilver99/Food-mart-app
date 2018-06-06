@@ -1,0 +1,27 @@
+#login-title{
+    background: #13221d;
+    color: whitesmoke;
+    padding: 1rem;
+    margin: 0;
+}
+
+#login-title > h5{
+    margin: 0;
+}
+
+.form-body{
+    background: whitesmoke;
+}
+
+div.form-group:last-child {
+    margin-bottom: 0
+}
+
+button[type="submit"]{
+    width: 40%;
+}
+
+.form-control:focus{
+    box-shadow: 0 0 0 #27AE60 !important;
+    outline: 3px solid  #27AE60 !important
+}

@@ -1,0 +1,102 @@
+#notification-outer-box{
+    background: #000000cc;
+    height: 30%;
+    width: 40%;
+    position: fixed;
+    top: 15%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    padding: .25rem .5rem;
+    font-size: 1.25rem;
+    z-index: 1000;
+    color: whitesmoke;
+    border-radius: .5rem;
+}
+
+#notification-inner-box{
+    height: 100%;
+}
+
+#msg-title, #msg-body {
+    padding: .25rem .5rem;
+}
+
+#msg-title {
+    font-weight: bold;
+    font-size: 1.35rem;
+    color: whitesmoke;
+    border-bottom: 2px solid;
+}
+
+.notice-icon{
+    height: 2rem;
+    width: 2rem;
+    margin-right: .25rem;
+}
+
+#msg-body {
+    font-size: 1.15rem;
+}
+
+
+
+
+/* dismiss button */
+#dismiss-button{
+
+    background: none;
+    border: 2px solid whitesmoke;
+    border-radius: .5rem;
+    padding:.5rem 1rem .6rem;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: bold;
+    line-height: 1.15rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+    transition: background 180ms ease-in-out;
+    min-width: 6rem;
+    max-width: 10rem;
+}
+
+#dismiss-button:focus{
+    border-bottom: 0 !important;
+}
+
+
+ /* Variables based on notification type */
+
+ /*success*/
+#notification-outer-box.success #msg-title{
+    border-color: #419c76;
+}
+
+
+#notification-outer-box.success #dismiss-button:hover{
+    background: #28a745; 
+    transition: background 180ms ease-in-out;   
+}
+
+/* error */
+#notification-outer-box.error #msg-title{
+    border-color: #c72a2a;
+}
+    
+#notification-outer-box.error #dismiss-button:hover{
+    background: #c72a2a;
+    transition: background 180ms ease-in-out;   
+}
+
+/* alert */
+#notification-outer-box.alert #msg-title{
+    border-color: rgb(201, 201, 9);
+}
+
+#notification-outer-box.alert #dismiss-button:hover{
+    background: rgb(179, 179, 56);
+    transition: background 180ms ease-in-out;   
+}
+

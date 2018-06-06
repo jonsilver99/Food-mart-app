@@ -1,0 +1,26 @@
+:host{
+    max-height: 24vh;
+}
+
+.store-content-area{
+    background:
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75)),
+    url(/assets/divBg.jpg);
+    background-size: 50%;
+    background-position: center center;
+}
+
+
+#main-heading a{
+    color: #13221d;
+}
+
+#hud a:hover {
+    color: #27AE60;
+}
+
+#header-wrapper{
+    padding-top:5.7vh;    
+    overflow: hidden;
+    /* display: flex; */
+}

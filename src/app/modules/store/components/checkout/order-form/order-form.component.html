@@ -1,0 +1,112 @@
+<h3>Order details</h3>
+<form id="order-form" [formGroup]="OrderForm">
+    <div formGroupName="ShippingDetails">
+        <div class="form-row">
+            <div class="col-sm-6">
+                <label>First name</label>
+                <app-invalid-form-field *ngIf="fieldIsInvalid('ShippingDetails.FirstName')" [Errors]="getFieldErrors('ShippingDetails.FirstName')">
+                </app-invalid-form-field>
+                <input type="text" formControlName="FirstName" class="form-control">
+            </div>
+            <div class="col-sm-6">
+                <label>Last name</label>
+                <app-invalid-form-field *ngIf="fieldIsInvalid('ShippingDetails.LastName')" [Errors]="getFieldErrors('ShippingDetails.LastName')">
+                </app-invalid-form-field>
+                <input type="text" formControlName="LastName" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Phone #</label>
+            <app-invalid-form-field *ngIf="fieldIsInvalid('ShippingDetails.Phone')" [Errors]="getFieldErrors('ShippingDetails.Phone')">
+            </app-invalid-form-field>
+            <input type="tel" appAmmendPhoneNumber minlength="11" maxlength="11" pattern="[0-9]{3}-[0-9]{7}\d*" formControlName="Phone"
+                class="form-control">
+        </div>
+        <div class="form-row">
+            <div class="col-sm-4">
+                <label>City</label>
+                <app-invalid-form-field *ngIf="fieldIsInvalid('ShippingDetails.City')" [Errors]="getFieldErrors('ShippingDetails.City')">
+                </app-invalid-form-field>
+                <select formControlName="City" class="form-control">
+                    <option value="">Select City</option>
+                    <option value="Haifa">Haifa</option>
+                    <option value="Netanya">Netanya</option>
+                    <option value="Tel Aviv">Tel Aviv</option>
+                    <option value="Jerusalem">Jerusalem</option>
+                    <option value="Rishon LeZion">Rishon Le'Zion</option>
+                    <option value="Ashdod">Ashdod</option>
+                    <option value="Eilat">Eilat</option>
+                </select>
+            </div>
+            <div class="col-sm-8">
+                <label>Street and Nº</label>
+                <app-invalid-form-field *ngIf="fieldIsInvalid('ShippingDetails.Street')" [Errors]="getFieldErrors('ShippingDetails.Street')">
+                </app-invalid-form-field>
+                <input type="text" formControlName="Street" class="form-control">
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-sm-5">      
+            <label>Delivery date</label>
+            <app-invalid-form-field *ngIf="fieldIsInvalid('DeliveryDate')" [Errors]="getFieldErrors('DeliveryDate')">
+            </app-invalid-form-field>
+            <input type="date" formControlName="DeliveryDate" class="form-control">
+        </div>
+    </div>
+    <div class="form-group" formGroupName="Payment">
+        <div class="form-row">
+            <div class="col-sm-5">
+                <label>Payment type</label>
+                <app-invalid-form-field *ngIf="fieldIsInvalid('Payment.Type')" [Errors]="getFieldErrors('Payment.Type')">
+                </app-invalid-form-field>
+                <select formControlName="Type" class="form-control" (change)="onSelectedPaymentType($event.target.value)">
+                    <option value="">Select type</option>
+                    <option value="Credit">Credit</option>
+                    <option value="Paypal">Paypal</option>
+                    <option value="Bitcoin">Bitcoin</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-row" *ngIf="getFieldValue('Payment.Type') == 'Credit'">
+            <div class="col-sm-4">
+                <label>Card brand</label>
+                <app-invalid-form-field *ngIf="fieldIsInvalid('Payment.CardBrand')" [Errors]="getFieldErrors('Payment.CardBrand')">
+                </app-invalid-form-field>
+                <select formControlName="CardBrand" class="form-control">
+                    <option value="">Select brand</option>
+                    <option value="Visa">Visa</option>
+                    <option value="Master card">Master card</option>
+                    <option value="American express">American express</option>
+                </select>
+            </div>
+            <div class="col-sm-8">
+                <label>Card number</label>
+                <app-invalid-form-field *ngIf="fieldIsInvalid('Payment.CardNumber')" [Errors]="getFieldErrors('Payment.CardNumber')">
+                </app-invalid-form-field>
+                <input appAmmendCreditCardNumber type="string" formControlName="CardNumber" class="form-control">
+            </div>
+        </div>
+        <div class="form-row" *ngIf="getFieldValue('Payment.Type') == 'Paypal' || getFieldValue('Payment.Type') == 'Bitcoin'">
+            <div class="col-sm-6">
+                <label>Email</label>
+                <app-invalid-form-field *ngIf="fieldIsInvalid('Payment.CredentialEmail')" [Errors]="getFieldErrors('Payment.CredentialEmail')">
+                </app-invalid-form-field>
+                <input type="email" formControlName="CredentialEmail" class="form-control">
+            </div>
+            <div class="col-sm-6">
+                <label>Password</label>
+                <app-invalid-form-field *ngIf="fieldIsInvalid('Payment.CredentialPassword')" [Errors]="getFieldErrors('Payment.CredentialPassword')">
+                </app-invalid-form-field>
+                <input type="password" formControlName="CredentialPassword" class="form-control">
+            </div>
+        </div>
+    </div>
+    <div id="place-order" class="flexRow">
+        <div id="cart-total" class="right-aligned">
+            <button type="button" id="checkout-button" (click)="onOrderPlaced()" [disabled]="OrderForm.invalid || OrderForm.pending">
+                Place Order!
+            </button>            
+        </div>
+    </div>
+</form>

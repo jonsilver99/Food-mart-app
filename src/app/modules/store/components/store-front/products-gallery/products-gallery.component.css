@@ -1,0 +1,125 @@
+/* products finder */
+#category-picker-nav{
+    height:8vh;
+    justify-content: space-between;
+}
+
+h4.category {
+    margin-bottom: 0;
+    font-weight: bold;
+    position: relative;
+}
+
+h4.category:after{
+    content: '';
+    width: 0%;
+    height: 2px;
+    border-bottom:3px solid #419c76;  
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    /* z-index: 10; */
+    transition: all 100ms linear;
+}    
+
+h4.category:hover{
+    cursor: pointer;
+}
+
+h4.category:hover:after{
+    width: 100%;    
+}
+
+h4.category.selected:after{
+    width: 100%;        
+}
+
+
+
+#products-gallery{
+    height: 86.3vh;    
+    background: 
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75)),
+    url(/assets/divBg.jpg);
+    background-size: 50%;
+}
+
+h4.gallery-title{
+    background: #419c76;
+    font-size: 1.3rem;
+    font-weight: bold;
+    padding: .25rem 1.25rem .4rem;
+    margin-bottom: 0;
+    text-align: center;
+    color: whitesmoke;
+}
+
+h4.pagination-number{
+    background: whitesmoke ;
+    color: #419c76 ;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: .25rem .75rem;
+    border: 2px solid #419c76;
+    display: flex;
+    align-items: center;
+    border-left: 0;
+    margin-bottom: 0;    
+}
+
+button.turn-page{
+    background: whitesmoke;
+    border: 2px solid #419c76;
+    color: #419c76;
+    font-weight: bold;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    border-left: 0;
+    margin-bottom: 0;
+}
+
+button.turn-page:disabled{
+    color: gainsboro;
+    border-color: gainsboro;
+}    
+
+h4.pagination-number:hover, button.turn-page:not(:disabled):hover, h4.pagination-number.selected{
+    cursor: pointer;
+    background: #419c76 !important;
+    color: whitesmoke !important;
+}
+    
+
+#recently-viewed-outline{
+    border: 1px solid #419c76;
+    background: #419c76;
+    overflow: hidden;
+}
+
+#browse-results-container{
+    height: 100%;
+    flex-wrap: wrap;
+    overflow: hidden;
+    padding: .25rem;
+    background: whitesmoke;
+    border: 1px solid whitesmoke;  
+}
+
+.product-cube{
+    width: 18.45%;
+    height: 32.85%;
+    -webkit-transition: all 50ms linear;
+    transition: all 50ms linear;
+    margin: 0.1rem;
+}
+
+.product-cube:hover{
+    border-right: 1px solid rgb(163, 163, 163); 
+    border-bottom: 1px solid rgb(163, 163, 163); 
+    border-top: 1px solid rgb(189, 189, 189); 
+    border-left: 1px solid rgb(189, 189, 189); 
+    transform: scale(1.05,1.05);  
+    transition: all 50ms linear;   
+    z-index: 20;
+}

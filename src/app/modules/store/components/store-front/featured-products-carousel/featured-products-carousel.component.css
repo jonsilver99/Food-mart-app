@@ -1,0 +1,197 @@
+:host{
+    max-height: 68vh;
+    overflow: hidden;
+}
+
+/*************************************
+    Carousel background content
+*************************************/
+#carousel-container{
+    position: relative;
+    height: 100%;
+}
+
+.category-bg{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: -1; 
+    opacity:0;
+    transition: opacity 800ms ease-in-out;     
+}
+
+.active-cat{
+    opacity:1 !important;
+    transition: opacity 800ms ease-in-out;     
+}
+
+/* category background images */
+#Bakery {
+    background-image: 
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url(/assets/categories/bakery.jpg);
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed; 
+}
+#Dairy {
+    background-image: 
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url(/assets/categories/dairy.jpg);
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed; 
+}
+#Drinks {
+    background-image: 
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url(/assets/categories/drinks.jpg);
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed; 
+}
+#MeatAndSeafood {
+    background-image: 
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url(/assets/categories/meats.jpg);
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed; 
+}
+#Pantry {
+    background-image: 
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url(/assets/categories/pantry.jpg);
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed; 
+}
+
+#VeggiesAndFruits {
+    background-image: 
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url(/assets/categories/fruitsAndVeggies.jpg);
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed; 
+}
+
+.category-switcher{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    color: white;
+    height: 3rem;
+    font-size: 3rem;
+    opacity: 0;
+    transition: opacity 200ms ease-in-out; 
+    z-index: 2;    
+}
+
+.category-switcher#next{
+    right: 1%;
+}
+
+.category-switcher#previous{
+    left: 1%;
+}
+
+#shop-default-category{
+    position: absolute;
+    bottom: 1%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    color: whitesmoke;    
+    font-size: 3rem;
+    width: 3rem;
+    z-index: 2;
+}
+
+.category-switcher:hover, #shop-default-category:hover{
+    color: #419c76;
+    cursor: pointer;
+}
+
+#carousel-container:hover .category-switcher {
+    opacity: 1;
+}
+
+
+/*************************************
+    Carousel interactive content
+*************************************/
+#interactive-content{
+    height: 100%;
+    width: 100%;
+    padding: 2rem 5rem;
+    color: white;
+    justify-content: space-around;
+    z-index: 1;   
+}
+
+#category-info {
+    max-width: 45%;
+    max-height: 77%;
+}
+
+#category-info h1.title{
+    font-weight: bold;
+    margin: 0;
+    background: #419c76;
+    padding: .5rem 1rem .75rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 100%;
+}
+
+#category-info p.paragraph{
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0;
+    padding: .5rem 1rem;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#category-info button.shop-this-category{
+    border: 2px solid whitesmoke;
+    color: whitesmoke;
+    font-size: 1.1rem;
+    width: 40%;
+    font-weight: bold;
+    padding: .75rem;
+    transition: background 150ms linear;
+    background: none;    
+    margin-left: auto;
+}
+
+#category-info button.shop-this-category:hover{
+    background: #27AE60;
+    transition: background 150ms linear;
+}
+
+#category-offers{
+    flex-wrap: wrap;
+    max-width: 45%;
+    height: 90%;
+    justify-content: center;
+    overflow: hidden
+}
+
+#category-offers .offer-cube{
+    width: 33%;
+    height: 48%;
+    margin: 0 .5% 1%;
+    opacity: .8;
+    transition: opacity 200ms ease-in-out;
+    
+}
+
+#category-offers .offer-cube:hover{
+    opacity: 1;
+    transition: opacity 200ms ease-in-out;
+}

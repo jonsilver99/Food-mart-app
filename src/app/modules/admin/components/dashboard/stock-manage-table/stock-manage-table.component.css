@@ -1,0 +1,8 @@
+table{
+    max-width: 100%;
+}
+thead{
+    padding: 1rem;
+    background: #27AE60;
+    color: whitesmoke;
+}

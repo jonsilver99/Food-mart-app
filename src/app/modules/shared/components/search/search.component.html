@@ -1,0 +1,11 @@
+<div id="search-field" [formGroup]="SearchField">
+    <div id="search-field-input">
+        <label>
+            <i class="fa fa-search"></i>
+        </label>
+        <input appIllegalCharsFilter id="search-field-input" type="text" formControlName="Input" class="form-control" placeholder="Search our products!">
+        <div *ngIf="IsPending" id="search-spinner">
+            <img src="/assets/spinners/spinnergif2.gif" alt="">
+        </div>
+    </div>
+</div>

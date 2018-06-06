@@ -1,0 +1,99 @@
+/* Form progress indicator */
+#progress{
+    background: #13221d;
+    color: gray;
+    list-style: none;
+    padding: 1rem 0 1rem;
+    margin: 0;
+    counter-reset: step;
+}
+
+#progress li {
+    position: relative;
+    list-style-type: none;
+    text-transform: uppercase;
+    font-size: .62rem;
+    width: 33.33%;
+    text-align: center;
+    font-weight: bold;
+}
+#progress li:before {
+    content: counter(step);
+	counter-increment: step;
+	width: 22px;
+	line-height: 20px;
+	display: block;
+    font-size: .85rem;
+	color: #333;
+	background: #6c757d;
+	border-radius: 3px;
+    margin: 0 auto 5px auto;
+    position: relative;
+    z-index: 1;
+}
+/*progress/steps connecting line*/
+#progress li:after {
+	content: '';
+	width: 100%;
+	height: 2px;
+	background: gray;
+	position: absolute;
+	left: -50%;
+	top: 9px;
+}
+#progress li:first-child:after {
+	content: none; 
+}
+/*marking active/completed steps green*/
+#progress li.active:before,  #progress li.active:after{
+	background: #27AE60;
+	color: white;
+}
+
+/* Forms */
+.formStep{
+    padding: 1rem;
+    background: whitesmoke;
+}
+
+.formStep-body{
+    max-height: 28rem;
+    min-height: 18rem;
+    position: relative;    
+}
+
+div[formGroupName] > div.form-group:last-child {
+    margin-bottom: 0
+}
+
+div[formGroupName] > h6{
+    border-bottom: 1px solid #919191;
+}
+
+label{
+    font-size: .8rem;
+    white-space: nowrap;
+}
+
+/* Form Step navigation buttons */
+.formStep-buttons{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    justify-content: center;
+    padding-top: 1rem;
+}
+
+.formStep-buttons button{
+    margin-right: .5rem
+}
+
+.formStep-buttons button:nth-child(2){
+    margin-right: 0
+}
+
+.formStep-buttons button:only-child{
+    /* margin-left: auto; */
+}
+
+

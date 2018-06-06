@@ -1,0 +1,13 @@
+<div class="stock-counter">
+    <div class="flexRow align-items-center">
+        <!-- <div class="flexCol"> -->
+        <button type="button" (click)="decrement()" [disabled]="value === min">
+            -
+        </button>
+        <p>{{ value }}</p>
+        <button type="button" (click)="increment()" [disabled]="value === max">
+            +
+        </button>
+        <!-- </div> -->
+    </div>
+</div>

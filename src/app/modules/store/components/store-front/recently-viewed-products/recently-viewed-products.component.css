@@ -1,0 +1,35 @@
+h4{
+    background: #419c76;
+    font-size: 1.3rem;
+    font-weight: bold;
+    padding: .25rem 1.25rem .4rem;
+    margin-bottom: 0;
+    text-align: center;
+    color: whitesmoke;
+}
+
+#recently-viewed-container{
+    height: 100%;
+    flex-wrap: wrap;
+    overflow: hidden;
+    background: whitesmoke;
+    padding: .25rem;
+    align-content: flex-start;
+}
+
+.recentley-viewed-cube{
+    width: 92.225%;
+    height: 32.85%;
+    margin: .1rem;    
+    transition: all 75ms linear;       
+}
+
+.recentley-viewed-cube:hover{
+    border-right: 1px solid rgb(163, 163, 163); 
+    border-bottom: 1px solid rgb(163, 163, 163); 
+    border-top: 1px solid rgb(189, 189, 189); 
+    border-left: 1px solid rgb(189, 189, 189); 
+    transform: scale(1.05,1.05);  
+    transition: all 75ms linear;   
+    z-index: 20;   
+}

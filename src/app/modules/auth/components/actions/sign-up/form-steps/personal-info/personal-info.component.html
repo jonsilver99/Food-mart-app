@@ -1,0 +1,63 @@
+<div [formGroup]="Parent" class="formStep-body">
+    <!-- Input fields -->
+    <div formGroupName="personalInfo" class="pad-sides-light">
+        <h6>Contact info</h6>
+        <div class="form-group">
+            <label>First name</label>
+            <app-invalid-form-field 
+                *ngIf="fieldIsInvalid('FirstName')" 
+                [Errors]="Parent.get('personalInfo.FirstName').errors">
+            </app-invalid-form-field>
+            <input appIllegalCharsFilter type="text" formControlName="FirstName" class="form-control">
+        </div>
+        <div class="form-group">
+            <label>Last name</label>
+            <app-invalid-form-field 
+                *ngIf="fieldIsInvalid('LastName')" 
+                [Errors]="Parent.get('personalInfo.LastName').errors">
+            </app-invalid-form-field>
+            <input appIllegalCharsFilter type="text" formControlName="LastName" class="form-control">
+        </div>
+        <div class="form-group">
+            <label>Phone #</label>
+            <app-invalid-form-field 
+                *ngIf="fieldIsInvalid('Phone')" 
+                [Errors]="Parent.get('personalInfo.Phone').errors">
+            </app-invalid-form-field>
+            <input 
+                type="tel" minlength="11" maxlength="11"
+                appAmmendPhoneNumber 
+                pattern="[0-9]{3}-[0-9]{7}\d*" formControlName="Phone"
+                class="form-control"
+            >
+        </div>
+        <h6>Address</h6>
+        <div class="form-row">
+            <div class="col-sm-4">
+                <label>City</label>
+                <app-invalid-form-field 
+                    *ngIf="fieldIsInvalid('City')" 
+                    [Errors]="Parent.get('personalInfo.City').errors">
+                </app-invalid-form-field>
+                <select formControlName="City" class="form-control">
+                    <option value="">Select City</option>
+                    <option value="Haifa">Haifa</option>
+                    <option value="Netanya">Netanya</option>
+                    <option value="Tel Aviv">Tel Aviv</option>
+                    <option value="Jerusalem">Jerusalem</option>
+                    <option value="Rishon LeZion">Rishon Le'Zion</option>
+                    <option value="Ashdod">Ashdod</option>
+                    <option value="Eilat">Eilat</option>
+                </select>
+            </div>
+            <div class="col-sm-8">
+                <label>Street and Nº</label>
+                <app-invalid-form-field 
+                    *ngIf="fieldIsInvalid('Street')" 
+                    [Errors]="Parent.get('personalInfo.Street').errors">
+                </app-invalid-form-field>
+                <input appIllegalCharsFilter type="text" formControlName="Street" class="form-control">
+            </div>
+        </div>
+    </div>
+</div>

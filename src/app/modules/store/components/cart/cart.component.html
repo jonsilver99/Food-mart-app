@@ -1,0 +1,78 @@
+<div id="cart-wrapper">
+    <!-- top nav bar -->
+    <app-nav-bar [styleByPage]="'storePage'">
+        <li routerLinkActive="active">
+            <i class="fa fa-home"></i>
+            <a class="nav-link" routerLink="../front">Back to store</a>
+        </li>
+        <li routerLinkActive="active">
+            <i class="fa fa-money"></i>
+            <span class="nav-bar-span">Sub-total: {{ subTotal | currency: 'EUR' }}</span>
+        </li>
+    </app-nav-bar>
+    <!-- Cart contents -->
+    <div class="store-content-area">
+        <section id="cart-contents" *ngIf="Cart$ | async as cart; else loading">
+            <h1>Cart 
+                <ng-template [ngIf]="IsPending">
+                    <span class="cart-status-indicator update-in-progress">Updating...</span>
+                </ng-template> 
+            </h1>
+            <table class="table" [formGroup]="CartForm">
+                <ng-template [ngIf]="reactiveCartItems.length" [ngIfElse]="empty">  
+                    <thead>             
+                        <tr>
+                            <th>Product</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody formArrayName="ItemsInCart">
+                            <tr app-product-row 
+                                *ngFor="let item of reactiveCartItems, let i = index" 
+                                [Mode]="'CartMode'" 
+                                [ReactiveCartItem]="item"
+                                (RemoveCartItem)="onRemoveCartItem($event, i)">
+                            </tr>
+                    </tbody>
+                </ng-template>
+                <tfoot>
+                    <tr>
+                        <th [colSpan]="3">                
+                            <div id="cart-summary-row" class="flexRow">
+                                <div class="right-aligned">
+                                    <div id="cart-total">
+                                        Sub-total: {{ subTotal | currency: 'EUR' }}
+                                    </div>
+                                    <div id="to-checkout">
+                                        <button 
+                                            type="button" 
+                                            id="checkout-button" 
+                                            (click)="onCheckout()"
+                                            [disabled]="CartForm.invalid || IsPending">
+                                            Checkout
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </th>
+                    </tr>
+                </tfoot>
+            </table>
+        </section>
+    </div>
+</div>
+
+<!-- conditional templates -->
+<ng-template #loading>
+    <div class="flexRow justify-content-center pad-medium">                
+        <span class="cart-status-indicator">Loading...</span>
+    </div>
+</ng-template>
+<ng-template #empty>
+    <thead>             
+        <tr>
+            <th [colSpan]="3"><span class="cart-status-indicator">Cart is empty...</span></th>
+        </tr>
+    </thead>
+</ng-template>

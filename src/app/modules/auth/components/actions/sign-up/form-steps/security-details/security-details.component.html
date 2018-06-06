@@ -1,0 +1,38 @@
+<div [formGroup]="Parent" class="formStep-body">
+    <!-- Input fields -->
+    <div formGroupName="securityDetails" class="pad-sides-light">
+        <h6>Your credentials</h6>
+        <div class="form-group">
+            <label>Identification#</label>
+            <app-invalid-form-field 
+                *ngIf="fieldIsInvalid('Identification')" 
+                [Errors]="Parent.get('securityDetails.Identification').errors">
+            </app-invalid-form-field>
+            <input type="number" formControlName="Identification" class="form-control">
+        </div>
+        <div class="form-group">
+            <label>Email</label>
+            <app-invalid-form-field 
+                *ngIf="fieldIsInvalid('Email')" 
+                [Errors]="Parent.get('securityDetails.Email').errors">
+            </app-invalid-form-field>
+            <input type="email" formControlName="Email" class="form-control">
+        </div>
+        <div class="form-group">
+            <label>Password</label>
+            <app-invalid-form-field 
+                *ngIf="fieldIsInvalid('Password')" 
+                [Errors]="Parent.get('securityDetails.Password').errors">
+            </app-invalid-form-field>
+            <input type="password" formControlName="Password" class="form-control">
+        </div>
+        <div class="form-group">
+            <label>Confirm Password</label>
+            <app-invalid-form-field 
+                *ngIf="fieldIsInvalid('PassConfirm')" 
+                [Errors]="Parent.get('securityDetails.PassConfirm').errors">
+            </app-invalid-form-field>
+            <input type="password" formControlName="PassConfirm" class="form-control">
+        </div>
+    </div>
+</div>

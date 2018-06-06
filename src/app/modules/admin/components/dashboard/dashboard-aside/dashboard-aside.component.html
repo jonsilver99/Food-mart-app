@@ -1,0 +1,44 @@
+<div id="aside-wrapper" class="flexCol">
+    <div id="aside-heading" class="flex1">
+        <a routerLink="/admin" class="flexCol align-items-center">
+            <img id="site-logo" src="/assets/logo2.jpg" alt="">
+            <h3>Administrator</h3>
+        </a>
+    </div>
+    <div id="aside-body" class="flex7 flexCol align-items-center">
+        <div id="accordion">
+            <div class="card">
+                <div class="card-header" id="headingTwo">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link collapsed" aria-expanded="false" aria-controls="collapseTwo" (click)="toggleTab('Sales')">
+                            Sales
+                        </button>
+                    </h5>
+                </div>
+                <div id="collapseTwo" class="collapse" [ngClass]="{'show':Accordion.OpenedTabs.Sales}" aria-labelledby="headingTwo" data-parent="#accordion">
+                    <div class="card-body">
+                        <h6 (click)="selectAction('trendGraph')" [ngClass]="{'selectedAction':Accordion.SelectedAction=='trendGraph'}">Trend graph</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header" id="headingOne">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link" aria-expanded="true" aria-controls="collapseOne" (click)="toggleTab('ManageStock')">
+                            Manage Stock
+                        </button>
+                    </h5>
+                </div>
+                <div id="collapseOne" class="collapse" [ngClass]="{'show':Accordion.OpenedTabs.ManageStock}" aria-labelledby="headingOne"
+                    data-parent="#accordion">
+                    <div class="card-body">
+                        <h6 (click)="selectAction('allProducts')" [ngClass]="{'selectedAction':Accordion.SelectedAction=='allProducts'}">All products </h6>
+                        <h6 (click)="selectAction('topSellers')" [ngClass]="{'selectedAction':Accordion.SelectedAction=='topSellers'}">Top sellers</h6>
+                        <h6 (click)="selectAction('lowOnStock')" [ngClass]="{'selectedAction':Accordion.SelectedAction=='lowOnStock'}">Low on stock</h6>
+                        <h6 (click)="selectAction('addProduct')" [ngClass]="{'selectedAction':Accordion.SelectedAction=='addProduct'}">Add product</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

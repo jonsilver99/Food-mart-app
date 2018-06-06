@@ -1,0 +1,28 @@
+<div id="purchase-history-wrapper">
+    <!-- top nav bar -->
+    <app-nav-bar [styleByPage]="'storePage'">
+        <li routerLinkActive="active">
+            <i class="fa fa-home"></i>
+            <a class="nav-link" routerLink="../front">Back to store</a>
+        </li>
+    </app-nav-bar>
+    <!-- history Panel -->
+    <div id="history-panel" class="store-content-area flexCol fullHeight" *ngIf="PurchaseHistory$ | async as purchaseHistory; else loading">
+        <ng-container *ngIf="purchaseHistory.length else empty">
+            <div *ngFor="let purchase of purchaseHistory">
+                <app-order-record [Order]="purchase"></app-order-record>
+            </div>
+        </ng-container>
+    </div>
+</div>
+
+<!-- conditional templates -->
+<ng-template #loading>
+    <div id="loading-template-large">
+        <img src="/assets/spinners/loading-template-spinner.gif" alt="">
+    </div>
+</ng-template>
+
+<ng-template #empty>
+    <span class="orders-status-indicator">Nothing yet...</span>
+</ng-template>

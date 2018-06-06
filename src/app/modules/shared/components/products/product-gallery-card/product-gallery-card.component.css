@@ -1,0 +1,101 @@
+:host{
+    /*Styles for the host comes from an exterior div wrapper - making the dimensions of this component dynamic*/
+}
+
+.gallery-card{
+    background: whitesmoke;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    color: black;
+    padding: 2px;
+    overflow: hidden;
+}
+
+.gallery-card:hover{
+    cursor: pointer;    
+}
+
+.card-image, .card-title, .card-price{
+    text-align: center;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 100%;
+}
+
+.card-image{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.card-image > img{
+    max-width: 85%;
+}
+
+.card-description{
+    padding: .35rem;
+    margin-top: auto;
+    border-top: 2px solid #419c7661;
+}
+
+.card-title{
+    margin-bottom: 0;
+}
+
+
+/* Flags */
+
+.bestSeller::after {
+    content: "Hot !";
+    position: absolute;
+    background: red;
+    color: white;
+    padding: 0rem 1.25rem .1rem;
+    transform: rotate(-45deg);
+    top: .75rem;
+    left: -3.25rem;
+    font-size: 1rem;
+    width: 10rem;
+    text-align: center;
+    opacity: 0.75;
+    font-weight: bold;
+} 
+
+.new::after {
+    content: "New !";
+    position: absolute;
+    background: #27ae60;
+    color: white;
+    padding: 0rem 1.25rem .1rem;
+    transform: rotate(-45deg);
+    top: .75rem;
+    left: -3.25rem;
+    font-size: 1rem;
+    width: 10rem;
+    text-align: center;
+    opacity: 0.75;
+    font-weight: bold;
+    
+}
+
+.outOfStock {
+    filter: grayscale(1);
+}    
+
+.outOfStock::after {
+    content: "Out of stock";
+    position: absolute;
+    background: red;
+    color: white;
+    padding: .15rem 1.25rem;
+    transform: rotate(-45deg);
+    top: 1.15rem;
+    left: -3rem;
+    font-size: .85rem;
+    width: 10rem;
+    text-align: center;
+    opacity: 0.55;
+    filter: grayscale(1) !important;
+}

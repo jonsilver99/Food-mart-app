@@ -1,0 +1,59 @@
+<div class="flexCol align-items-center">
+    <div class="col-md-4">
+        <!-- switch to sign-in form -->
+        <div class="form-header">
+            <a class="formSwitcher" (click)="navigateToSignInForm($event)">Already a member? - Sign in here</a>
+            <br>
+        </div>
+        <!-- Signup form exterior -->
+        <form [formGroup]="SignUpForm" (ngSubmit)="onSubmit()">
+
+            <!-- Steps/progress indicator -->
+            <ul id="progress" class="flexRow">
+                <ng-container *ngIf="!IsPending">
+                    <li class="active">Security details</li>
+                    <li [ngClass]="{'active': Progress.indicator.step2 || Progress.indicator.step3}">Personal details</li>
+                    <li [ngClass]="{'active': Progress.indicator.step3}">Review & submit</li>
+                </ng-container>
+
+                <span *ngIf="IsPending" class="center-aligned">
+                    <b>
+                        Loading...  
+                        <i class="fa fa-spinner fa-spin"></i>
+                    </b>
+                </span>
+            </ul>
+
+            <!-- Step 1: Security details -->
+            <div class='formStep flexCol' [@stepsAnimation]="StepDirection" *ngIf="Progress.steps.step1 && !Progress.steps.step2 && !Progress.steps.step3">
+                <app-security-details [Parent]="SignUpForm"></app-security-details>
+                <section class="formStep-buttons">
+                    <button (click)="changeFormStep($event)" data-switch="step2" data-direction="next" type="button" class="btn btn-secondary"
+                        [disabled]="SignUpForm.get('securityDetails').invalid">Next
+                    </button>
+                </section>
+            </div>
+            <!-- Step 2: Personal info -->
+            <div class='formStep flexCol' [@stepsAnimation]="StepDirection" *ngIf="Progress.steps.step2 && !Progress.steps.step1 && !Progress.steps.step3">
+                <app-personal-info [Parent]="SignUpForm"></app-personal-info>
+                <section class="formStep-buttons">
+                    <button (click)="changeFormStep($event)" data-switch="step1" data-direction="back" type="button" class="btn btn-secondary">Back
+                    </button>
+                    <button (click)="changeFormStep($event)" data-switch="step3" data-direction="next" type="button" class="btn btn-secondary"
+                        [disabled]="SignUpForm.get('personalInfo').invalid">Next
+                    </button>
+                </section>
+            </div>
+            <!-- Step 3: Review and Submit -->
+            <div class='formStep flexCol' [@stepsAnimation]="StepDirection" *ngIf="Progress.steps.step3 && !Progress.steps.step1 && !Progress.steps.step2">
+                <app-review-and-submit [Parent]="SignUpForm"></app-review-and-submit>
+                <section class="formStep-buttons">
+                    <button (click)="changeFormStep($event)" data-switch="step2" data-direction="back" type="button" class="btn btn-secondary">Back
+                    </button>
+                    <button type="submit" class="btn btn-success" [disabled]="SignUpForm.invalid || IsPending">Submit</button>
+                </section>
+            </div>
+
+        </form>
+    </div>
+</div>

@@ -1,0 +1,35 @@
+<div id="checkout-wrapper">
+    <!-- top nav bar -->
+    <app-nav-bar [styleByPage]="'storePage'">
+        <li routerLinkActive="active">
+            <i class="fa fa-shopping-cart"></i>
+            <a class="nav-link" routerLink="../cart">Back to cart</a>
+        </li>
+        <li routerLinkActive="active">
+            <i class="fa fa-money"></i>
+            <span class="nav-bar-span">Grand-total: {{ grandTotal | currency: 'EUR' }}</span>
+        </li>
+    </app-nav-bar>
+
+    <!-- Checkout Panel -->
+    <div id="checkout-panel" class="store-content-area flexRow fullHeight" *ngIf="Cart$ | async as cart; else loading">
+        <!-- cart-contents -->
+        <section id="cart-contents">
+            <app-cart-summary [Cart]="cart" [SubTotal]="subTotal" [ShippingAndHandling]="ShippingAndHandling" [GrandTotal]="grandTotal">
+            </app-cart-summary>
+        </section>
+
+        <!-- order-form -->
+        <section id="order-placement">
+            <app-order-form [OrderForm]="OrderForm" (OrderPlaced)="onOrderPlaced($event)"></app-order-form>
+        </section>
+    </div>
+</div>
+
+
+<!-- conditional templates -->
+<ng-template #loading>
+    <div class="flexRow justify-content-center pad-medium">
+        <span class="cart-status-indicator">Loading...</span>
+    </div>
+</ng-template>

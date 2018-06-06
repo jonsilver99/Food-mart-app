@@ -1,0 +1,14 @@
+.store-content-area{
+    padding: 1rem 5rem;
+}
+
+#TopPage {
+    height: 92vh;
+    position: relative;
+}
+
+#BottomPage{
+    height: 94.3vh;
+    position: relative;
+    border-top: 1px solid gainsboro;
+}

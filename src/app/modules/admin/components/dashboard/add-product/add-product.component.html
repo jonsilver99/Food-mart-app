@@ -1,0 +1,78 @@
+<div id="add-product-form-wrapper">
+    <h3>New Product</h3>
+    <form id="add-product-form" [formGroup]="AddProductForm" (ngSubmit)="onSubmit()">
+        <div class="flexRow">
+            <section id="prod-details" class="flex10">
+                <div class="form-row">
+                    <div class="col-sm-6">
+                        <label>Product name</label>
+                        <app-invalid-form-field *ngIf="fieldIsInvalid('ProductName')" [Errors]="getFieldErrors('ProductName')">
+                        </app-invalid-form-field>
+                        <input type="text" formControlName="ProductName" class="form-control">
+                    </div>
+                    <div class="col-sm-6">
+                        <label>Category</label>
+                        <app-invalid-form-field *ngIf="fieldIsInvalid('Category')" [Errors]="getFieldErrors('Category')">
+                        </app-invalid-form-field>
+                        <select formControlName="Category" class="form-control">
+                            <option value="">Select category</option>
+                            <option value="5ae4afce85d0ed5dc2709655">Bakery</option>
+                            <option value="5ae4afce85d0ed5dc2709657">Dairy</option>
+                            <option value="5ae4afce85d0ed5dc2709659">Drinks</option>
+                            <option value="5ae4afce85d0ed5dc270965b">Meat & seafood</option>
+                            <option value="5ae4afce85d0ed5dc270965d">Pantry</option>
+                            <option value="5ae4afce85d0ed5dc270965f">Veggies & fruits</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <app-invalid-form-field *ngIf="fieldIsInvalid('Description')" [Errors]="getFieldErrors('Description')">
+                    </app-invalid-form-field>
+                    <textarea cols="30" rows="8" formControlName="Description" class="form-control"></textarea>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-3">
+                        <label>Unit price</label>
+                        <app-invalid-form-field *ngIf="fieldIsInvalid('UnitPrice')" [Errors]="getFieldErrors('UnitPrice')">
+                        </app-invalid-form-field>
+                        <input type="number" formControlName="UnitPrice" class="form-control">
+                    </div>
+                    <div class="col-md-3">
+                        <label>Discount</label>
+                        <app-invalid-form-field *ngIf="fieldIsInvalid('Discount')" [Errors]="getFieldErrors('Discount')">
+                        </app-invalid-form-field>
+                        <input type="number" formControlName="Discount" class="form-control">
+                    </div>
+                    <div class="col-md-3">
+                        <label>Units in stock</label>
+                        <app-invalid-form-field *ngIf="fieldIsInvalid('UnitsInStock')" [Errors]="getFieldErrors('UnitsInStock')">
+                        </app-invalid-form-field>
+                        <input type="number" formControlName="UnitsInStock" class="form-control">
+                    </div>
+                    <div class="col-md-3">
+                        <label>Units on order</label>
+                        <app-invalid-form-field *ngIf="fieldIsInvalid('UnitsOnOrder')" [Errors]="getFieldErrors('UnitsOnOrder')">
+                        </app-invalid-form-field>
+                        <input type="number" formControlName="UnitsOnOrder" class="form-control">
+                    </div>
+                </div>
+            </section>
+            <section id="prod-image" class="flex4">
+                <div class="form-group">
+                    <label>Product image</label>
+                    <input type="file" (change)="onFileLoaded()" #imgFileInput>
+                    <div id="prod-img-preview">
+                        <img [src]="ImgPreviewPath" alt="" (click)="openFileSelection()">
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="submit-wrapper flexRow bottom-aligned align-items-end">
+            <button type="submit" id="submit-new-product" class="right-aligned" [disabled]="AddProductForm.invalid">
+                Submit
+            </button>
+        </div>
+    </form>
+</div>

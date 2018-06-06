@@ -1,0 +1,18 @@
+/*Cart summary*/
+#cart-contents-item-list{
+    height: 80%;
+}
+
+#cart-summary-row{
+    height: 20%;
+}
+
+#cart-total > span{
+    display: block;
+    font-weight: bold;
+    font-size: 1.15rem;    
+}
+
+#cart-total > span.grand-total{
+    color: #9E61C8;
+}

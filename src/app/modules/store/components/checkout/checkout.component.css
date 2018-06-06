@@ -1,0 +1,36 @@
+#checkout-wrapper{
+    height: 100vh;
+    background: whitesmoke;
+    padding-top:5.7vh;
+    color: #979797;    
+}
+
+.nav-bar-span {
+    display: inline-block;
+    padding: .5rem 0rem;
+}
+
+#checkout-panel{
+    flex-wrap: wrap;
+    justify-content: space-between;    
+}
+
+#checkout-panel > section{
+    width: 48%;
+    overflow: hidden;
+}
+
+
+
+.green{
+    color: #27ae60;
+}
+.red{
+    color: red;
+}
+.pink{
+    background: pink;
+}
+.lightblue{
+    background: lightskyblue;
+}

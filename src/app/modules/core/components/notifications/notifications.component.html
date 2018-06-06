@@ -1,0 +1,27 @@
+<div id="notifications-bg-overlay" (click)="dismiss($event, NotificationBox)">
+
+    <div id="notification-outer-box" [ngClass]="notificationType" #NotificationBox>
+        <div id="notification-inner-box" class="flexCol">
+            <div id="msg-title" class="flexRow align-items-center">
+                <ng-template [ngIf]="Notification.Type === 'success'">
+                    <img src="/assets/success.png" class="notice-icon" alt=""> {{ Notification.Title || 'Success!' }}
+                </ng-template>
+                <ng-template [ngIf]="Notification.Type === 'error'">
+                    <img src="/assets/error.png" class="notice-icon" alt=""> {{ Notification.Title || 'An error has occured!' }}
+                </ng-template>
+                <ng-template [ngIf]="Notification.Type === 'alert'">
+                    <img src="/assets/alert.png" class="notice-icon" alt=""> {{ Notification.Title || 'Please notice!' }}
+                </ng-template>
+            </div>
+            <div id="msg-body">
+                {{Notification.Message}}
+            </div>
+            <div class="flexRow bottom-aligned" *ngIf="Notification.dismissButton">
+                <button class="right-aligned" type="button" id="dismiss-button" (click)="dismiss()">
+                    <span>{{Notification.dismissButton || 'Ok'}}</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+</div>

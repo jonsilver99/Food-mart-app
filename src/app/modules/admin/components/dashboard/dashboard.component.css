@@ -1,0 +1,17 @@
+#dashboard{
+    height: 100vh;
+    background: whitesmoke;
+    padding-top:5.7vh;
+}
+
+.store-content-area{
+    padding: 1rem 5rem;
+}
+
+#dash-body{
+    height: 94.3vh;
+}
+
+#dash-dynamic-container{
+    overflow: auto;
+}

@@ -1,0 +1,15 @@
+<section id="TopPage" class="flexCol">
+    <app-store-header class="flex1"></app-store-header>
+    <app-featured-products-carousel 
+        class="flex3" 
+        (StartShoppingClick)="scrollIntoView('bottomPage', $event)" 
+        [FeaturedProducts]="FeaturedProducts$ | async"
+        [UserName]="UserName">
+    </app-featured-products-carousel>
+</section>
+<section id="BottomPage" #BottomPage>
+    <app-products-gallery></app-products-gallery>
+</section>
+
+<!-- View product from gallery -->
+<app-view-product></app-view-product>

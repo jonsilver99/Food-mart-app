@@ -1,0 +1,7 @@
+<nav class="navbar flexRow no-wrap nav-padding" [ngClass]="styleByPage">
+    <!-- Dynamic content projection -->
+    <ng-content select="[logo]"></ng-content>
+    <ul id="navButtons" class="navbar-nav flexRow">
+        <ng-content select="li"></ng-content>
+    </ul>
+</nav>

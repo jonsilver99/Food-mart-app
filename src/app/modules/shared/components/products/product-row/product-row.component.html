@@ -1,0 +1,82 @@
+<ng-container [ngSwitch]="Mode">
+
+    <!-- As cart item mode:  -->
+    <ng-template [ngSwitchCase]="'CartMode'">
+        <td id="NameAndPic" class="flexRow">
+            <img class="prod-row-img" src="{{S3FolderPath}}/{{getProductFieldValue('ProductPicture')}}" alt="">
+            <span class="prod-row-name flexCol justify-content-center">{{ getProductFieldValue('ProductName') }}</span>
+        </td>
+        <td id="Quantity" [formGroup]="ReactiveCartItem">
+            <app-invalid-form-field class="cart-item-invalid-notice" *ngIf="fieldIsInvalid('Qty')" [Errors]="getFieldErrors('Qty')">
+            </app-invalid-form-field>
+            <div class="flexRow">
+                <app-counter formControlName="Qty" [max]="getProductFieldValue('UnitsInStock')">
+                </app-counter>
+                <button class="remove-cart-item" (click)="removeCartItem()">
+                    <div class="flexRow">
+                        <i class="fa fa-trash">
+                            <span>
+                                Remove
+                            </span>
+                        </i>
+                    </div>
+                </button>
+            </div>
+        </td>
+        <td id="Price">
+            <span>{{ getProductFieldValue('UnitPrice') | currency: 'EUR'}}</span>
+        </td>
+    </ng-template>
+
+    <!-- As item in checkout mode:  -->
+    <ng-template [ngSwitchCase]="'CheckoutMode'">
+        <td id="NameAndPic" class="flexRow">
+            <img class="prod-row-img" [src]="determineImageSrc()" alt="">
+            <span class="prod-row-name flexCol justify-content-center">{{ getProductFieldValue('ProductName') }}</span>
+        </td>
+        <td id="Quantity">
+            <span class="prod-row-qty"> {{ CartItem.Qty }} </span>
+        </td>
+        <td id="Price">
+            <span>{{ getProductFieldValue('UnitPrice') | currency: 'EUR'}}</span>
+        </td>
+    </ng-template>
+
+    <!-- As editable item in admin mode:  -->
+    <ng-template [ngSwitchCase]="'EditProductMode'">
+        <td [formGroup]="ReactiveProduct" id="NameAndPic" class="flexRow">
+            <img class="prod-row-img" src="{{S3FolderPath}}/{{getProductFieldValue('ProductPicture')}}" alt="">
+        </td>
+        <td [formGroup]="ReactiveProduct" id="ProductName">
+            <input type="text" formControlName="ProductName" class="form-control">
+        </td>
+        <td [formGroup]="ReactiveProduct" id="Category">
+            <select formControlName="Category" class="form-control">
+                <option value="5ae4afce85d0ed5dc2709655">Bakery</option>
+                <option value="5ae4afce85d0ed5dc2709657">Dairy</option>
+                <option value="5ae4afce85d0ed5dc2709659">Drinks</option>
+                <option value="5ae4afce85d0ed5dc270965b">Meat & seafood</option>
+                <option value="5ae4afce85d0ed5dc270965d">Pantry</option>
+                <option value="5ae4afce85d0ed5dc270965f">Veggies & fruits</option>
+            </select>
+        </td>
+        <td [formGroup]="ReactiveProduct" id="Description">
+            <input type="text" formControlName="Description" class="form-control">
+        </td>
+        <td [formGroup]="ReactiveProduct" id="UnitPrice">
+            <input type="number" formControlName="UnitPrice" class="numeralInput form-control">
+        </td>
+        <td [formGroup]="ReactiveProduct" id="UnitsInStock">
+            <input type="number" formControlName="UnitsInStock" class="numeralInput form-control">
+        </td>
+        <td [formGroup]="ReactiveProduct" id="Discount">
+            <input type="number" formControlName="Discount" class="numeralInput form-control">
+        </td>
+        <td [formGroup]="ReactiveProduct" id="UnitsSold">
+            <span>{{ getProductFieldValue('UnitsSold')}}</span>
+        </td>
+        <td [formGroup]="ReactiveProduct" id="saveChanges">
+            <button class="edit-product" type="button" (click)="editThisProduct()" [disabled]="!ReactiveProduct.dirty">Save</button>
+        </td>
+    </ng-template>
+</ng-container>

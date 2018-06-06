@@ -1,0 +1,16 @@
+<!-- preload these images -->
+<app-nav-bar [styleByPage]="'authPage'">
+    <div logo>
+        <a routerLink="/SignIn">
+            <img id="site-logo-small" src="/assets/logo6.png" alt="">
+        </a>
+    </div>
+    <li routerLinkActive="active" class="right-aligned">
+        <a class="nav-link" routerLink="signin">
+            <b>Sign In</b>
+        </a>
+    </li>
+</app-nav-bar>
+<div id="auth-content-area">
+    <router-outlet></router-outlet>
+</div>

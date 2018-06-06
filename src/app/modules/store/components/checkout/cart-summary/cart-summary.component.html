@@ -1,0 +1,38 @@
+<h3>Cart summary</h3>
+<ng-template [ngIf]="Cart.ItemsInCart.length" [ngIfElse]="loading">
+    <div id="cart-contents-item-list" class="overflow-auto">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr 
+                    app-product-row *ngFor="let item of Cart.ItemsInCart, let i = index" 
+                    [Mode]="'CheckoutMode'" 
+                    [CartItem]="item"
+                    [ProxyImage]="ProxyImages">
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="cart-summary-row" class="flexRow">
+        <div id="cart-total" class="right-aligned">
+            <span>Sub-total: {{ SubTotal | currency: 'EUR' }}</span>
+            <span>Shipping and handling: {{ ShippingAndHandling | currency: 'EUR' }}</span>
+            <span class="grand-total">Grand-total: {{ GrandTotal | currency: 'EUR' }}</span>
+        </div>
+    </div>
+</ng-template>
+
+
+
+<!-- conditional templates -->
+<ng-template #loading>
+    <div class="flexRow justify-content-center pad-medium">
+        <span class="cart-status-indicator">Loading...</span>
+    </div>
+</ng-template>

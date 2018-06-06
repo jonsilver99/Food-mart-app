@@ -1,0 +1,28 @@
+.review-row{
+    margin: 0;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: baseline;
+}
+
+.review-row label {
+    margin: 0 1rem 0 0;
+    max-width: 20%
+}
+
+.review-row .form-control {
+    padding: 0;
+    min-width: 80%;
+    background: none;
+    border: 0;
+    border-bottom: 1px solid gainsboro;
+    border-radius: 0;
+}
+
+div.review-container > div.form-group:last-child {
+    margin-bottom: 0
+}
+
+div.review-container > h6{
+    border-bottom: 1px solid #919191;
+}
