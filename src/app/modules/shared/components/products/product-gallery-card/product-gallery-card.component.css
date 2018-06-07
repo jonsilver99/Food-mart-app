@@ -37,7 +37,8 @@
 .card-description{
     padding: .35rem;
     margin-top: auto;
-    border-top: 2px solid #419c7661;
+    /* border-top: 2px solid #419c7661; */
+    border-top: 2px solid rgba(65, 156, 118, 0.3803921568627451);
 }
 
 .card-title{

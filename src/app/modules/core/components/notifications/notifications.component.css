@@ -1,5 +1,6 @@
 #notification-outer-box{
-    background: #000000cc;
+    /* background: #000000cc; */
+    background: rgba(0, 0, 0, 0.8);
     height: 30%;
     width: 40%;
     position: fixed;
