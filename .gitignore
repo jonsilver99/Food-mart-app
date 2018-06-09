@@ -42,4 +42,4 @@ testem.log
 Thumbs.db
 
 # Dev added igonres
-package-lock.json
+/package-lock.json
